@@ -1,5 +1,6 @@
 <script>
 import Sidebar from "../../components/menus/sidebar.vue";
+import Topbar from "../../components/menus/topbar.vue";
 
 export default {
   components: {
@@ -18,9 +19,12 @@ export default {
       </div>
 
       <div class="h-full flex-1 bg-white-50">
-        <div class="h-full w-full flex">
+        <section class="h-full w-full flex flex-col">
+	        <header>
+		        <topbar />
+	        </header>
           <RouterView />
-        </div>
+        </section>
       </div>
     </main>
   </section>

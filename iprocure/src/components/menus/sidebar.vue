@@ -4,7 +4,7 @@ import { routesArray } from "@/utils/routes";
 export default {
   computed: {
     menus() {
-      return routesArray;
+      return routesArray.filter( route => route.meta.show);
     },
 
     activeRoute() {
