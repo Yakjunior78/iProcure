@@ -1,4 +1,5 @@
 import store from "@/store";
+import { ElNotification } from 'element-plus'
 
 export const mutate = async (
     state: string,
@@ -20,7 +21,7 @@ export const dispatch = async (
   route: string,
   loader: any
 ) => {
-  await store.dispatch(action, {
+  return await store.dispatch(action, {
     state: state,
     form: data,
     module: module,
@@ -28,3 +29,16 @@ export const dispatch = async (
     loader: loader ? loader : null,
   });
 };
+
+export const politeResponse = async (success: boolean, data: any) => { //TODO to be refactored to be able to handle all responses in different use cases
+  notify(success ? 'Success' : 'Error', data.message, success ? 'success' : 'error');
+  return { success, data };
+}
+
+const notify = (title: string, message: string, type:any) => {
+  ElNotification({
+    title: title,
+    message: message,
+    type: type
+  })
+}

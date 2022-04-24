@@ -1,5 +1,9 @@
 import axios from "axios";
 
+export class HttpService {
+
+}
+
 export const fetch = (route: string, filters: any) => {
   return baseApiResource().get(route);
 };

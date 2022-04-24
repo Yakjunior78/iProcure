@@ -1,0 +1,15 @@
+.el-input--large .el-input__wrapper {
+    padding: 10px 15px !important;
+}
+
+.el-input__inner {
+    font-size: 16px !important;
+}
+
+.el-button--large {
+    --el-button-size: 50px !important;
+    height: var(--el-button-size);
+    padding: 12px 30px !important;
+    font-size: var(--el-font-size-base);
+    border-radius: var(--el-border-radius-base);
+}
