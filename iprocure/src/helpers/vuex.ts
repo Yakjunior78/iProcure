@@ -1,6 +1,10 @@
 import store from "@/store";
 
-export const mutate = async (state: string, value: any, module: any) => {
+export const mutate = async (
+    state: string,
+    value: any,
+    module: any
+) => {
   await store.commit("MUTATE_STATE", {
     state: state,
     data: value,
