@@ -5,6 +5,6 @@ export default function isAuthenticated (x: any) {
 	if (x.to.name !== 'login' && !isAuthenticated) {
 		x.next({ name: 'login' });
 	} else {
-		x.next();
+		x.next(x);
 	}
 }
