@@ -1,7 +1,7 @@
-import subjects from './subjects';
+import subjects from "./countries";
 
 export default {
-	modules: {
-		subjects
-	}
-}
+  modules: {
+    subjects,
+  },
+};

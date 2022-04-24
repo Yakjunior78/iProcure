@@ -23,10 +23,12 @@ export const destroy = (route: string, id: string) => {
 const base_url = import.meta.env.VITE_API_URL;
 
 function baseApiResource() {
+  const token = "";
+
   return axios.create({
     baseURL: base_url ? base_url.toString() : "",
     headers: {
-      Authorization: "",
+      Authorization: token ? "Bearer " + token : "",
     },
   });
 }

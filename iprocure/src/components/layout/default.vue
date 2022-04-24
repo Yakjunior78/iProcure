@@ -1,12 +1,7 @@
 <script>
-	export default {
-
-	}
+export default {};
 </script>
 
 <template>
-	<section>
-
-	</section>
+  <section></section>
 </template>
-

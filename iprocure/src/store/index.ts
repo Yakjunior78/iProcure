@@ -1,20 +1,19 @@
-import {createStore} from "vuex";
+import { createStore } from "vuex";
 
-import Getters from './getters';
-import Mutations from './mutations';
-import Actions from './actions';
+import Getters from "./getters";
+import Mutations from "./mutations";
+import Actions from "./actions";
 
 const strict = false;
 
 const store = createStore({
+  strict,
 
-    strict,
-
-    modules: {
-        Getters,
-        Mutations,
-        Actions
-    }
+  modules: {
+    Getters,
+    Mutations,
+    Actions,
+  },
 });
 
 export default store;
