@@ -1,4 +1,4 @@
-import { fetch } from '@/apis';
+import { fetch } from "@/services/http.service";
 import { mutate } from "@/helpers/vuex";
 
 const index = {
