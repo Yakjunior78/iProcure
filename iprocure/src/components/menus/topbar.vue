@@ -35,7 +35,7 @@ export default {
 </script>
 
 <template>
-	<section class="w-full h-full flex justify-between border-b">
+	<section class="w-full h-full flex justify-between border-b items-center">
 		<div
 			class="font-medium p-5 px-10">
 
@@ -59,14 +59,12 @@ export default {
 				<div class="mt-1">
 					<el-dropdown>
 
-						<el-button
-							circle
-							size="mini"
-							class="rounded-full border p-1 flex items-center justify-center bg-purple-300">
-							<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+						<div
+							class="rounded-full border p-2 flex items-center justify-center bg-purple-300 cursor-pointer">
+							<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
 							</svg>
-						</el-button>
+						</div>
 
 						<template #dropdown>
 							<el-dropdown-menu>
@@ -77,15 +75,6 @@ export default {
 									>
 										<i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"/>
 										Profile
-									</router-link>
-								</el-dropdown-item>
-
-								<el-dropdown-item>
-									<router-link
-										:to="{ name: 'settings' }"
-										class="dropdown-item">
-										<i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"/>
-										Settings
 									</router-link>
 								</el-dropdown-item>
 

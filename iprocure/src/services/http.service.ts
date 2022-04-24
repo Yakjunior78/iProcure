@@ -1,38 +1,41 @@
 import axios from "axios";
-
-export class HttpService {
-
-}
-
-export const fetch = (route: string, filters: any) => {
-  return baseApiResource().get(route);
-};
-
-export const store = (route: string, data: any) => {
-  return baseApiResource().post(route, data);
-};
-
-export const show = (route: string, id: string) => {
-  return baseApiResource().get(route + "/" + id);
-};
-
-export const update = (route: string, id: string, data: any) => {
-  return baseApiResource().put(route + "/" + id, data);
-};
-
-export const destroy = (route: string, id: string) => {
-  return baseApiResource().delete(route + "/" + id);
-};
+import store from "@/store";
 
 const base_url = import.meta.env.VITE_API_URL;
 
-function baseApiResource() {
-  const token = "";
-
-  return axios.create({
-    baseURL: base_url ? base_url.toString() : "",
-    headers: {
-      Authorization: token ? "Bearer " + token : "",
-    },
-  });
+export class HttpService {
+  
+  api;
+  
+  constructor() {
+    
+    const token = store.getters.authUser.token;
+    
+    this.api = axios.create({
+      baseURL: base_url ? base_url.toString() : "",
+      headers: {
+        Authorization: token ? "Bearer " + token : "",
+      },
+    });
+  }
+  
+  fetch(route: string, filters: any) {
+    return this.api.get(route);
+  }
+  
+  store(route: string, data: any) {
+    return this.api.post(route, data);
+  }
+  
+  show(route: string, id: string) {
+    return this.api.get(route + "/" + id);
+  }
+  
+  update(route: string, id: string, data: any) {
+    return this.api.put(route + "/" + id, data);
+  }
+  
+  destroy(route: string, id: string) {
+    return this.api.delete(route + "/" + id);
+  }
 }

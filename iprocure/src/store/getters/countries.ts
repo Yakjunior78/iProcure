@@ -1,11 +1,11 @@
 const state = {
   countries: {},
-  fetchingCountries: false,
+  fetching: false,
 };
 
 const getters = {
   countries: (state: any) => state.countries,
-  fetchingCountries: (state: any) => state.fetchingCountries,
+  fetching: (state: any) => state.fetching
 };
 
 export default {
