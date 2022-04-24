@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+
 import { routesArray } from "@/utils/routes";
 
 const router = createRouter({

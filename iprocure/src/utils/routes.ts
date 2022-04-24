@@ -3,7 +3,7 @@ export const routesArray = [
     path: "/login",
     name: "login",
     component: () => import("../pages/auth/login.vue"),
-    metadata: {
+    meta: {
       show: false,
       auth: false,
       permissions: [],
@@ -16,9 +16,9 @@ export const routesArray = [
   },
   {
     path: "/register",
-    name: "login",
+    name: "register",
     component: () => import("../pages/auth/register.vue"),
-    metadata: {
+    meta: {
       show: true,
       auth: false,
       permissions: [],
@@ -33,7 +33,7 @@ export const routesArray = [
     path: "/",
     name: "home",
     component: () => import("../pages/index.vue"),
-    metadata: {
+    meta: {
       show: true,
       auth: false,
       permissions: [],
@@ -46,9 +46,9 @@ export const routesArray = [
   },
   {
     path: "/profile",
-    name: "about",
+    name: "profile",
     component: () => import("../pages/profile/index.vue"),
-    metadata: {
+    meta: {
       show: true,
       auth: true,
       permissions: [],

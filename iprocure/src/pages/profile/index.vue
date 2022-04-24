@@ -3,5 +3,9 @@ export default {};
 </script>
 
 <template>
-  <section></section>
+  <section>
+	  <div class="">
+		  <p>We are at profile</p>
+	  </div>
+  </section>
 </template>

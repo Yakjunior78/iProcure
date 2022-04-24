@@ -1,7 +1,11 @@
 <script>
-export default {};
+export default {
+
+}
 </script>
 
 <template>
-  <section></section>
+	<section>
+		<p>We are at login</p>
+	</section>
 </template>

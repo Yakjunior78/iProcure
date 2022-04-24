@@ -1,14 +1,10 @@
 <script>
-import { mainMenu, footerMenu } from "@/utils/menu";
+import { routesArray } from "@/utils/routes";
 
 export default {
   computed: {
-    mainMenus() {
-      return mainMenu();
-    },
-
-    footerMenus() {
-      return footerMenu();
+    menus() {
+      return routesArray;
     },
 
     activeRoute() {
@@ -35,15 +31,15 @@ export default {
         class="h-full w-full flex flex-col items-center justify-center space-y-5"
       >
         <router-link
-          v-for="(menu, key) in mainMenus"
+          v-for="(menu, key) in menus"
           :key="key"
-          :to="{ name: menu.to }"
+          :to="{ name: menu.name }"
         >
           <div
             class="text-gray-500 p-2 rounded-sm flex items-center justify-center hover:text-gray-200"
-            :class="{ 'text-gray-200': activeRoute === menu.to }"
+            :class="{ 'text-gray-200': activeRoute === menu.name }"
           >
-            <span v-html="menu.svg"> </span>
+            <span v-html="menu.meta.svg"> </span>
           </div>
         </router-link>
       </div>
@@ -52,20 +48,7 @@ export default {
     <footer>
       <div
         class="h-full w-full flex flex-col items-center justify-end space-y-10 py-10"
-      >
-        <router-link
-          v-for="(menu, key) in footerMenus"
-          :key="key"
-          :to="{ name: menu.to }"
-        >
-          <div
-            class="text-gray-300 p-2 rounded-sm flex items-center justify-center hover:text-gray-900"
-            :class="{ 'text-gray-900': activeRoute === menu.to }"
-          >
-            <span v-html="menu.svg"> </span>
-          </div>
-        </router-link>
-      </div>
+      ></div>
     </footer>
   </section>
 </template>
