@@ -1,12 +1,12 @@
 import store from "@/store";
 import { ElNotification } from 'element-plus'
 
-export const mutate = async (
+export const mutate = (
     state: string,
     value: any,
     module: any
 ) => {
-  await store.commit("MUTATE_STATE", {
+  store.commit("MUTATE_STATE", {
     state: state,
     data: value,
     rootState: store.state.Getters[module],

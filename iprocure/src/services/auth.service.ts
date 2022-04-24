@@ -1,4 +1,5 @@
-import {dispatch} from "@/helpers/vuex";
+import {dispatch, mutate} from "@/helpers/vuex";
+import router from "@/router";
 
 export class AuthService {
 	
@@ -19,6 +20,9 @@ export class AuthService {
 	}
 	
 	private static handleLoggedIn(data: any) {
-		console.log('DATA : ', data);
+		mutate('authUser', data.data, 'auth');
+		mutate('isAuthenticated', true, 'auth');
+		
+		router.push({ name: 'home' });
 	}
 }
