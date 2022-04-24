@@ -1,23 +1,23 @@
 <script>
-	export default {};
+export default {};
 </script>
 
 <template>
-  <section class="h-screen w-full flex flex-col">
-	  <header class="w-full">
-		  <div class="">
-			  <p>We are here</p>
-		  </div>
-	  </header>
+  <section class="h-screen w-full flex flex-col py-10">
+    <header class="w-full sm:w-18/20 md:w-15/20 lg:w-5/20 mx-auto">
+      <div class="">
+	      <p>i-procure</p>
+      </div>
+    </header>
 
-	  <main class="flex-grow w-full h-64">
-		  <div class="h-full w-full">
-			  <RouterView />
-		  </div>
-	  </main>
+    <main class="flex-grow h-64 w-full sm:w-18/20 md:w-15/20 lg:w-5/20 mx-auto my-3">
+      <div class="h-full w-full py-10">
+        <RouterView />
+      </div>
+    </main>
 
-	  <footer class="w-full">
-		  <p>Footer</p>
-	  </footer>
+    <footer class="w-full sm:w-18/20 md:w-15/20 lg:w-5/20 mx-auto">
+	    <p>Powered by i-procure ltd © 2022</p>
+    </footer>
   </section>
 </template>
