@@ -113,12 +113,14 @@
 								<div class="font-semibold text-sm text-gray-600 mb-1">Date of Birth</div>
 
 								<div class="">
-									<el-input
+									<el-date-picker
 										v-model="form.dateOfBirth"
-										placeholder="Enter your date of birth"
+										type="date"
 										size="large"
+										placeholder="Pick a day"
 										style="width: 100%"
 									/>
+
 								</div>
 							</div>
 						</div>
