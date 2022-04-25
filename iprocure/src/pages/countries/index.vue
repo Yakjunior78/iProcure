@@ -2,6 +2,7 @@
 import {dispatch} from "../../helpers/vuex";
 import {mapGetters} from "vuex";
 import {formatDate} from "../../utils/filters";
+import {AuthService} from "../../services/auth.service";
 
 export default {
 	computed: {
@@ -26,16 +27,12 @@ export default {
 			);
 		},
 
-		formatDate(date) {
-			return formatDate(date);
-		},
-
 		view(id) {
 			this.$router.push({ name: 'countryView', params: { id: id }})
 		},
 
-		edit(country) {
-			console.log('COUNTRY TO EDIT : ', country);
+		isPermitted(permissions) {
+			return AuthService.isPermitted(permissions);
 		}
 	},
 
@@ -57,6 +54,7 @@ export default {
 				<div class="flex justify-end">
 					<div class="">
 						<el-button
+							v-show="isPermitted(['create_country'])"
 							size="large"
 							class="bg-gray-800 text-white py-4 px-8 rounded-md flex space-x-5">
 							<svg
@@ -103,6 +101,7 @@ export default {
 
 								<div class="flex-1 flex justify-end">
 									<el-button
+										v-show="isPermitted('view_country')"
 										@click="view(country.id)"
 										class="bg-gray-200 py-1"
 										size="medium">

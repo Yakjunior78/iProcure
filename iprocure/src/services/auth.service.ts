@@ -27,12 +27,12 @@ export class AuthService {
 		router.push({ name: 'home' });
 	}
 	
-	static isPermitted(permission: string) {
+	static isPermitted(permissions: string) {
 		
 		const user = store.getters.authUser?.user;
 		
 		if(!user) return false;
 		
-		return !!user.permissions.includes(permission);
+		return !!user.permissions.some((perm: string) => permissions.includes(perm));
 	}
 }
