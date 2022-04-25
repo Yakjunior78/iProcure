@@ -17,7 +17,7 @@
 			]),
 
 			user() {
-				return this.authUser.user;
+				return this.authUser?.user;
 			}
 		},
 
@@ -32,8 +32,8 @@
 		},
 
 		mounted() {
-			this.form.firstName = this.user.firstName;
-			this.form.lastName = this.user.lastName;
+			this.form.firstName = this.user?.firstName;
+			this.form.lastName = this.user?.lastName;
 		}
 	}
 </script>

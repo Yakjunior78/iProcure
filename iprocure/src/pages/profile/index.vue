@@ -12,7 +12,7 @@ export default {
 			'authUser'
 		]),
 		user() {
-			return this.authUser.user;
+			return this.authUser?.user;
 		}
 	}
 }
@@ -36,7 +36,7 @@ export default {
 
 					<div class="w-14/20 px-2">
 						<p class="text-lg font-semibold text-gray-800">
-							{{ user.firstName }} {{ user.lastName }}
+							{{ user?.firstName }} {{ user?.lastName }}
 						</p>
 					</div>
 
@@ -56,7 +56,7 @@ export default {
 						</div>
 
 						<div class="">
-							{{ user.firstName }} {{ user.lastName }}
+							{{ user?.firstName }} {{ user?.lastName }}
 						</div>
 					</div>
 
@@ -66,7 +66,7 @@ export default {
 						</div>
 
 						<div class="">
-							{{ user.username }}
+							{{ user?.username }}
 						</div>
 					</div>
 
@@ -76,7 +76,7 @@ export default {
 						</div>
 
 						<div class="">
-							{{ user.phoneNumber }}
+							{{ user?.phoneNumber }}
 						</div>
 					</div>
 
@@ -86,7 +86,7 @@ export default {
 						</div>
 
 						<div class="">
-							{{ user.email }}
+							{{ user?.email }}
 						</div>
 					</div>
 				</div>
