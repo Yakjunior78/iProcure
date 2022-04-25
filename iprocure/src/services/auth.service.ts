@@ -20,6 +20,18 @@ export class AuthService {
 		}
 	}
 	
+	static async update(form: any) {
+		
+		await dispatch(
+			'STORE',
+			'',
+			form,
+			'auth',
+			'auth/update-profile',
+			'submitting'
+		);
+	}
+	
 	private static handleLoggedIn(data: any) {
 		mutate('authUser', data.data, 'auth');
 		mutate('isAuthenticated', true, 'auth');

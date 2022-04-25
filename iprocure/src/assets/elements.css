@@ -13,3 +13,55 @@
     font-size: var(--el-font-size-base);
     border-radius: var(--el-border-radius-base);
 }
+
+.av-input .el-input__inner {
+    height: 50px !important;
+    line-height: 50px !important;
+}
+
+.av-input .el-input__icon {
+    line-height: 50px !important;
+}
+
+.av-input-md .el-input__inner {
+    height: 40px !important;
+    line-height: 40px !important;
+}
+
+.av-input-md .el-input__icon {
+    line-height: 40px !important;
+}
+
+.vue-tel-input {
+    height: 50px !important;
+}
+
+.av-branch .el-input__inner {
+    border: none !important;
+    background: none !important;
+    font-weight: 700;
+    color: black;
+    text-transform: uppercase;
+}
+
+
+.el-collapse-item__wrap {
+    border-bottom: none !important;
+}
+
+.el-collapse {
+    border-top: none !important;
+    border-bottom: none !important;
+}
+
+.el-dialog__header {
+    padding: 0 !important;
+}
+
+.el-dialog__body {
+    padding: 0 !important;
+}
+
+.el-dialog__footer {
+    padding: 0 !important;
+}
