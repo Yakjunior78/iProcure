@@ -9,7 +9,6 @@ const layout = ref();
 watch(
 	() => store.getters.isAuthenticated as string | undefined,
 	async () => {
-		console.log('IS LOGGED IN  : ', store.getters.isAuthenticated);
 		layout.value = store.getters.isAuthenticated
 			? markRaw(DefaultLayout)
 			: markRaw(GuestLayout);

@@ -1,14 +1,36 @@
 <script>
+import {dispatch} from "../../helpers/vuex";
 import {mapGetters} from "vuex";
 
 export default {
 	computed: {
 		...mapGetters([
-			'authUser'
+			'country'
 		]),
-		user() {
-			return this.authUser.user;
+		countryId() {
+			return this.$route.params.id;
 		}
+	},
+
+	methods: {
+		getCountry() {
+			dispatch(
+				'FETCH',
+				'country',
+				{},
+				'countries',
+				'auth/countries/'+this.countryId,
+				'fetching'
+			);
+		},
+
+		goTo(route) {
+			this.$router.push({ name: route });
+		}
+	},
+
+	mounted() {
+		this.getCountry();
 	}
 }
 </script>
@@ -20,10 +42,11 @@ export default {
 				<div class="w-full h-full flex items-center">
 					<div class="w-2/20 flex">
 						<div
-							class="flex items-center space-x-5 bg-gray-100 hover:bg-gray-200 p-3 rounded-full cursor-pointer">
+							@click="goTo('countries')"
+							class="flex items-center space-x-5 bg-gray-100 hover:bg-gray-200 py-2 px-3 rounded-sm cursor-pointer">
 							<div class="">
 								<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+									<path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
 								</svg>
 							</div>
 						</div>
@@ -31,7 +54,7 @@ export default {
 
 					<div class="w-14/20 px-2">
 						<p class="text-lg font-semibold text-gray-800">
-							{{ user.firstName }} {{ user.lastName }}
+							{{ country.name }}
 						</p>
 					</div>
 
@@ -39,7 +62,7 @@ export default {
 						<el-button
 							size="large"
 							class="flex items-center bg-gray-800 hover:bg-gray-900 text-white"
-						>
+							>
 							<span>
 								<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
 								</svg>
@@ -59,41 +82,41 @@ export default {
 				<div class="bg-white border rounded-md">
 					<div class="py-3 border-b w-full px-4">
 						<div class="text-[12px] font-medium text-gray-500">
-							Full Name:
+							Country Code:
 						</div>
 
 						<div class="">
-							{{ user.firstName }} {{ user.lastName }}
+							{{ country.iso2CountryCode }}
 						</div>
 					</div>
 
 					<div class="py-3 border-b w-full px-4">
 						<div class="text-[12px] font-medium text-gray-500">
-							User Name:
+							Phone Code:
 						</div>
 
 						<div class="">
-							{{ user.username }}
+							{{ country.phoneCode }}
 						</div>
 					</div>
 
 					<div class="py-3 border-b w-full px-4">
 						<div class="text-[12px] font-medium text-gray-500">
-							Phone Number:
+							Currency Code:
 						</div>
 
 						<div class="">
-							{{ user.phoneNumber }}
+							{{ country.currencyCode }}
 						</div>
 					</div>
 
-					<div class="py-3 border-b w-full px-4">
+					<div class="py-3 w-full px-4">
 						<div class="text-[12px] font-medium text-gray-500">
-							Email Address:
+							Timezone:
 						</div>
 
 						<div class="">
-							{{ user.email }}
+							{{ country.timezone }}
 						</div>
 					</div>
 				</div>

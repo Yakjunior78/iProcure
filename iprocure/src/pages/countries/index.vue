@@ -10,7 +10,7 @@ export default {
 		]),
 
 		countryArr() {
-			return this.countries.data;
+			return this.countries;
 		}
 	},
 
@@ -28,6 +28,14 @@ export default {
 
 		formatDate(date) {
 			return formatDate(date);
+		},
+
+		view(id) {
+			this.$router.push({ name: 'countryView', params: { id: id }})
+		},
+
+		edit(country) {
+			console.log('COUNTRY TO EDIT : ', country);
 		}
 	},
 
@@ -43,16 +51,13 @@ export default {
 		<header class="w-full">
 			<div class="w-full flex justify-between">
 				<div class="">
-					<p class="text-xl font-bold text-gray-800">
-						Countries
-						<br>
-					</p>
 					<p class="text-sm text-gray-400">View and manage all countries here</p>
 				</div>
 
 				<div class="flex justify-end">
 					<div class="">
 						<el-button
+							size="large"
 							class="bg-gray-800 text-white py-4 px-8 rounded-md flex space-x-5">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +69,7 @@ export default {
 								<path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/>
 							</svg>
 
-							<span>New module</span>
+							<span>Add country</span>
 
 						</el-button>
 					</div>
@@ -72,59 +77,61 @@ export default {
 			</div>
 		</header>
 
-		<main class="flex-grow h-64 py-10 px-20 overflow-y-scroll">
+		<main class="flex-grow h-64 py-10 overflow-y-scroll">
 			<div class="h-full w-full">
 				<div
-					class="w-full grid grid-flow-row-dense lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 grid-cols-1 gap-8">
+					class="w-full grid grid-flow-row-dense lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-2 gap-6">
 
 					<section
 						v-for="(country, key) in countryArr"
 						:key="key"
-						class="flex flex-col shadow-md bg-white rounded-md p-8 flex flex-col space-y-4">
-
-						<header class="w-full">
-							<div class="text-teal-500 font-bold text-xs uppercase">
-								{{ formatDate(country.updated_at) }}
-							</div>
-
-							<div class="font-semibold text-xl text-gray-800">
-								{{ country.name }}
-							</div>
-						</header>
+						class="flex flex-col border bg-white rounded-md p-8 flex flex-col space-y-4">
 
 						<main class="flex-grow text-[14px] text-gray-500 text-justify">
-							{{ country.description }}
-						</main>
+							<div class="w-full h-full flex items-center">
+								<div class="w-3/20 flex">
+									<p class="bg-gray-600 flex items-center text-white text-[12px] rounded-sm px-2 py-1">
+										{{ country.iso2CountryCode }}
+									</p>
+								</div>
 
-						<footer class="pt-5">
-							<div class="flex items-center space-x-3">
-								<el-button
-									class="border py-3 px-4 rounded-md flex ">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="h-4 w-4"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										stroke-width="2">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
-									</svg>
-								</el-button>
+								<div class="w-13/20 px-2">
+									<p class="text-lg font-semibold text-gray-800">
+										{{ country.name }}
+									</p>
+								</div>
 
-								<el-button
-									class="bg-gray-800 text-white py-3 px-4 rounded-md">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										class="h-4 w-4"
-										fill="none"
-										viewBox="0 0 24 24"
-										stroke="currentColor"
-										stroke-width="2">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-									</svg>
-								</el-button>
+								<div class="flex-1 flex justify-end">
+									<el-dropdown>
+										<div class="el-dropdown-link border bg-gray-200 p-2 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-300">
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												class="h-4 w-4"
+												fill="none"
+												viewBox="0 0 24 24"
+												stroke="currentColor"
+												stroke-width="2">
+												<path stroke-linecap="round" stroke-linejoin="round" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+											</svg>
+										</div>
+										<template #dropdown>
+											<el-dropdown-menu>
+
+												<el-dropdown-item
+													@click="view(country.id)">
+													View
+												</el-dropdown-item>
+
+												<el-dropdown-item
+													@click="edit(country)">
+													Edit
+												</el-dropdown-item>
+											</el-dropdown-menu>
+										</template>
+									</el-dropdown>
+								</div>
 							</div>
-						</footer>
+						</main>
 					</section>
 				</div>
 			</div>

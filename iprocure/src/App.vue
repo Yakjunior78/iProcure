@@ -5,7 +5,7 @@ import AppLayout from "./components/layouts/index.vue";
 export default defineComponent({
 	components: {
 		AppLayout,
-	},
+	}
 });
 </script>
 

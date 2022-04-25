@@ -11,7 +11,7 @@ const index = {
             .fetch(payload.route, payload.filters)
             .then(({data}) => {
                 if (payload.loader) mutate(payload.loader, false, payload.module);
-                mutate(payload.state, data, payload.module);
+                mutate(payload.state, data.data, payload.module);
             })
             .catch(() => {
                 if (payload.loader) mutate(payload.loader, false, payload.module);
