@@ -29,9 +29,9 @@ const index = {
                 if (payload.loader) mutate(payload.loader, false, payload.module);
                 return await politeResponse(true, data);
             })
-            .catch( async (error) => {
+            .catch( async (resp) => {
                 if (payload.loader) mutate(payload.loader, false, payload.module);
-                return await politeResponse(false, error);
+                return await politeResponse(false, resp.response.data);
             });
     }
 };

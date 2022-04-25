@@ -1,5 +1,7 @@
 <script>
 	import {AuthService} from "../../services/auth.service";
+	import {mapGetters} from "vuex";
+	import {mutate} from "../../helpers/vuex";
 
 	export default {
 		data() {
@@ -8,10 +10,28 @@
 			};
 		},
 
+		computed: {
+			...mapGetters([
+				'errors'
+			]),
+
+			generalErrors() {
+				return this.errors.filter(error => !error.field)
+			}
+		},
+
 		methods: {
 			submit() {
 				AuthService.login(this.form);
+			},
+
+			filteredErrors(field) {
+				return this.errors.filter(error => error.field === field)
 			}
+		},
+
+		mounted() {
+			mutate('errors', [], 'auth');
 		}
 	};
 </script>
@@ -34,6 +54,16 @@
 
 		<main class="flex-grow w-full h-64">
 			<div class="w-full h-full">
+				<div
+					v-if="generalErrors.length"
+					class="rounded-md bg-red-100 p-5 my-3">
+					<div
+						class="text-red-500 font-semibold"
+						v-for="error in generalErrors">
+						{{ error.message }}
+					</div>
+				</div>
+
 				<form action="" class="py-5">
 					<div class="mb-5">
 						<div class="font-semibold text-sm text-gray-600 mb-1">Username</div>
@@ -44,6 +74,14 @@
 								placeholder="Enter your username"
 								size="large"
 							/>
+						</div>
+
+						<div class="">
+							<div
+								class="text-red-600 font-semibold text-[12px]"
+								v-for="error in filteredErrors('username')">
+								*{{ error.message }}
+							</div>
 						</div>
 					</div>
 
@@ -57,6 +95,14 @@
 								placeholder="Enter your password"
 								size="large"
 							/>
+						</div>
+
+						<div class="">
+							<div
+								class="text-red-600 font-semibold text-[12px]"
+								v-for="error in filteredErrors('password')">
+								*{{ error.message }}
+							</div>
 						</div>
 					</div>
 
