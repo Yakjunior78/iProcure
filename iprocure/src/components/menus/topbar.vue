@@ -1,5 +1,7 @@
 <script>
 import {routeName} from "@/utils/filters";
+import {mapGetters} from "vuex";
+import {mutate} from "@/helpers/vuex";
 
 export default {
 
@@ -10,6 +12,9 @@ export default {
 	},
 
 	computed: {
+		...mapGetters([
+			'collapsed'
+		]),
 
 		routeName() {
 			return routeName(this.$route.name);
@@ -31,6 +36,10 @@ export default {
 			localStorage.clear();
 			this.$router.push({ name: 'login' });
 			location.reload();
+		},
+
+		toggleCollapse() {
+			mutate('collapsed', !this.collapsed, 'layout');
 		}
 	}
 }
@@ -39,24 +48,28 @@ export default {
 <template>
 	<section class="w-full h-full flex justify-between border-b items-center">
 		<div
-			class="font-medium p-5 px-10">
+			class="font-medium p-5 px-10 flex items-center">
 
-			<div class="font-bold uppercase text-sm">
+			<div
+				class="mr-3 lg:hidden">
+				<el-button
+					@click="toggleCollapse()"
+					class="bg-gray-200 p-2 rounded-md">
+					<svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h8m-8 6h16" />
+					</svg>
+				</el-button>
+			</div>
+
+			<div
+				class="font-bold uppercase text-sm hidden lg:block">
 				{{ routeName }}
 			</div>
 		</div>
 
 		<div class="flex items-center space-x-4 px-10">
 
-			<div class="lg:hidden px-6">
-
-			</div>
-
 			<div class="flex flex-row justify-between">
-
-				<div class="mr-10">
-
-				</div>
 
 				<div class="mt-1">
 					<el-dropdown>

@@ -11,7 +11,7 @@ watch(
 	async () => {
 		layout.value = store.getters.isAuthenticated
 			? markRaw(DefaultLayout)
-			: markRaw(GuestLayout);
+			: markRaw(DefaultLayout);
 	},
 	{immediate: true}
 );

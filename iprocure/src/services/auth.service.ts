@@ -16,18 +16,15 @@ export class AuthService {
 		);
 		
 		if (res.success) {
-			this.handleLoggedIn(res.data);
+			return this.handleLoggedIn(res.data);
 		}
 		
-		if(!res.success) {
-			console.log('ERROR: ', res.data.errors);
-			mutate('errors', res.data.errors, 'auth');
-		}
+		return mutate('errors', res.data.errors, 'auth');
 	}
 	
 	static async update(form: any) {
 		
-		await dispatch(
+		return await dispatch(
 			'STORE',
 			'',
 			form,

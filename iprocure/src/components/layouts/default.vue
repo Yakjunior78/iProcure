@@ -1,12 +1,26 @@
 <script>
 import Sidebar from "../../components/menus/sidebar.vue";
 import Topbar from "../../components/menus/topbar.vue";
+import {mapGetters} from "vuex";
+import {mutate} from "@/helpers/vuex";
 
 export default {
 	components: {
 		Sidebar,
 		Topbar
 	},
+
+	computed: {
+		...mapGetters([
+			'collapsed'
+		])
+	},
+
+	methods: {
+		toggleCollapse() {
+			mutate('collapsed', false, 'layout');
+		}
+	}
 };
 </script>
 
@@ -14,7 +28,8 @@ export default {
 	<section class="w-full h-screen flex flex-col">
 		<main class="w-full h-full flex flex-row">
 			<div
-				class="h-full w-1/20 border-r border-gray-100 bg-gray-900 text-white"
+				class="z-50 h-full border-r border-gray-100 bg-gray-900 text-white absolute md:relative md:-translate-x-0 inset-y-0 left-0 transform transition-all duration-1600 ease-in-out"
+				:class="[ collapsed ? '-translate-x-full' : '', !collapsed ? 'w-2/5 lg:w-1/20' : 'w-10/20 sm:w-4/20 md:4/20 lg:w-1/20' ]"
 			>
 				<sidebar/>
 			</div>

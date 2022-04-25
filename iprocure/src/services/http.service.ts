@@ -9,7 +9,7 @@ export class HttpService {
   
   constructor() {
     
-    const token = store.getters.authUser.token;
+    const token = store.getters.authUser?.token;
     
     this.api = axios.create({
       baseURL: base_url.toString(),
