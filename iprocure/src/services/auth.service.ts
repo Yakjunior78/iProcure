@@ -1,5 +1,6 @@
 import {dispatch, mutate} from "@/helpers/vuex";
 import router from "@/router";
+import store from "@/store";
 
 export class AuthService {
 	
@@ -24,5 +25,14 @@ export class AuthService {
 		mutate('isAuthenticated', true, 'auth');
 		
 		router.push({ name: 'home' });
+	}
+	
+	static isPermitted(permission: string) {
+		
+		const user = store.getters.authUser?.user;
+		
+		if(!user) return false;
+		
+		return !!user.permissions.includes(permission);
 	}
 }

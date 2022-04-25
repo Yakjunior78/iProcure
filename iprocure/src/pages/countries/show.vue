@@ -1,6 +1,7 @@
 <script>
 import {dispatch} from "../../helpers/vuex";
 import {mapGetters} from "vuex";
+import {AuthService} from "../../services/auth.service";
 
 export default {
 	computed: {
@@ -26,6 +27,10 @@ export default {
 
 		goTo(route) {
 			this.$router.push({ name: route });
+		},
+
+		isPermitted(permission) {
+			return AuthService.isPermitted(permission);
 		}
 	},
 
@@ -60,6 +65,7 @@ export default {
 
 					<div class="flex-1 flex justify-end">
 						<el-button
+							v-show="isPermitted('edit_country')"
 							size="large"
 							class="flex items-center bg-gray-800 hover:bg-gray-900 text-white"
 							>

@@ -102,33 +102,14 @@ export default {
 								</div>
 
 								<div class="flex-1 flex justify-end">
-									<el-dropdown>
-										<div class="el-dropdown-link border bg-gray-200 p-2 rounded-full flex items-center justify-center cursor-pointer hover:bg-gray-300">
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												class="h-4 w-4"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke="currentColor"
-												stroke-width="2">
-												<path stroke-linecap="round" stroke-linejoin="round" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-											</svg>
-										</div>
-										<template #dropdown>
-											<el-dropdown-menu>
-
-												<el-dropdown-item
-													@click="view(country.id)">
-													View
-												</el-dropdown-item>
-
-												<el-dropdown-item
-													@click="edit(country)">
-													Edit
-												</el-dropdown-item>
-											</el-dropdown-menu>
-										</template>
-									</el-dropdown>
+									<el-button
+										@click="view(country.id)"
+										class="bg-gray-200 py-1"
+										size="medium">
+										<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+											<path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+										</svg>
+									</el-button>
 								</div>
 							</div>
 						</main>
